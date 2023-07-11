@@ -1,0 +1,13 @@
+{"logdir":"/tmp/logs",
+  "home":"/data",
+  "once_dir":"/tmp/.app/once_proc",
+  "init_tgz":{"src":"/app/init.tgz", "dst": "/tmp/.app/"},
+  "apps":[
+    {"name":"sshserv", "cwd":"/tmp/.app/serv", "args":["./sshserv", "serve"]},
+    {"name":"plservice", "cwd":"/data",
+      "args":["/app/anaconda3/envs/gm/bin/python", "-c", "import sitech.aipaas.gm.runner.plservice as pl; pl.main(8181)"],
+      "env": {"PYTHONPATH":"/app/_app/guimod"}},
+    {"name":"nginx", "cwd":"/tmp/.app/ng", "args":["sbin/nginx", "-p", "/tmp/.app/ng", "-g", "daemon off;"]},
+    {"name":"plcont-ck", "cwd":"/data/.app", "args":["python", "plcont-ck.py"], "crontab":"*/10 * * * *"}
+  ]
+}

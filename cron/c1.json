@@ -1,0 +1,12 @@
+{"logdir":"/tmp/logs",
+  "home":"/data",
+  "once_dir":"/tmp/once_proc",
+  "init_tgz":{"src":"/data/app/init.tgz", "dst": "/tmp/.app/"},
+  "apps":[
+    {"name":"w", "cwd":"/data/gosrc/file-sync", "args":["./file-sync", "w"],
+      "env": {"PATH": "/data/gosrc/file-sync", "_PORT": "7788"}},
+    {"name":"gpu_mon", "cwd":"/tmp/logs", "args":["/tmp/file-sync", "w1", "/tmp/logs/gpu.log", "--","nvidia-smi", "dmon", "-s", "pucm", "-d", "2"],
+      "check_exists": "nvidia-smi"},
+    {"name":"w1", "cwd":"/data/gosrc/file-sync", "args":["./file-sync", "w1"], "crontab":"*/1 * * * *"}
+  ]
+}

@@ -1,0 +1,6 @@
+{
+	"keyfile":"d:/devtool/bin/id_rsa",
+	"tunnels":[
+		{"tunnel":"localhost:2022 <- localhost:2022", "server":"app@121.43.230.103:22", "retry_sec":300}
+	]
+}

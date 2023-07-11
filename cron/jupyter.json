@@ -1,0 +1,12 @@
+{"logdir":"/tmp/logs",
+  "home":"/data",
+  "once_dir":"",
+  "init_tgz": null,
+  "apps":[
+    {"name":"sshserv", "cwd":"/data/.app/serv", "args":["./sshserv", "serve"]},
+    {"name":"jupyter", "cwd":"/data",
+      "args": ["jupyter", "lab", "--port=8085", "--ip=0.0.0.0", "--no-browser", "--allow-root"]},
+    {"name":"gpu_mon", "cwd":"/tmp/logs", "args":["/data/.app/file-sync", "w1", "/tmp/logs/gpu.log", "--","nvidia-smi", "dmon", "-s", "pucm", "-d", "2"],
+      "check_exists": "nvidia-smi"}
+  ]
+}
